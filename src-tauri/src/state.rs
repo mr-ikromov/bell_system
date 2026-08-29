@@ -1,8 +1,8 @@
-use std::path::{Path, PathBuf};
-use std::sync::RwLock;
 use crate::audio::{Audio, Kind};
 use crate::db::Db;
 use crate::models::Bell;
+use std::path::{Path, PathBuf};
+use std::sync::RwLock;
 
 const EXTS: [&str; 4] = ["mp3", "wav", "ogg", "flac"];
 

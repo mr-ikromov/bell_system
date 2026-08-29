@@ -1,13 +1,13 @@
+use crate::routing::SpeakerRoute;
+use rodio::cpal::traits::{DeviceTrait, HostTrait};
+use rodio::source::Source;
+use rodio::{Decoder, OutputStream, OutputStreamBuilder, Sink};
+use serde::Serialize;
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::mpsc::{self, Receiver, Sender};
 use std::sync::Arc;
 use std::time::{Duration, Instant};
-use rodio::cpal::traits::{DeviceTrait, HostTrait};
-use rodio::source::Source;
-use rodio::{Decoder, OutputStream, OutputStreamBuilder, Sink};
-use serde::Serialize;
-use crate::routing::SpeakerRoute;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Kind {

@@ -32,8 +32,8 @@ pub fn is_bluetooth(name: &str) -> bool {
 
 #[cfg(target_os = "linux")]
 mod imp {
-    use std::process::Command;
     use super::Sink;
+    use std::process::Command;
     fn pactl(args: &[&str]) -> Option<String> {
         let out = Command::new("pactl").args(args).output().ok()?;
         if !out.status.success() {
@@ -163,6 +163,7 @@ mod imp {
 
 #[cfg(target_os = "windows")]
 mod imp {
+    use super::Sink;
     use std::sync::Once;
     use windows::core::{Interface, GUID, HRESULT, PCWSTR};
     use windows::Win32::Devices::FunctionDiscovery::PKEY_Device_FriendlyName;
@@ -176,7 +177,6 @@ mod imp {
         CoCreateInstance, CoInitializeEx, CLSCTX_ALL, COINIT_MULTITHREADED, STGM_READ,
     };
     use windows::Win32::System::Variant::VT_LPWSTR;
-    use super::Sink;
 
     const PKEY_DEVICE_ENUMERATOR_NAME: PROPERTYKEY = PROPERTYKEY {
         fmtid: GUID::from_u128(0xa45c254e_df1c_4efd_8020_67d146a850e0),

@@ -8,11 +8,11 @@ mod scheduler;
 mod sleep;
 mod state;
 
-use tauri::{Emitter, Manager};
-use tauri_plugin_autostart::MacosLauncher;
 use audio::Audio;
 use db::Db;
 use state::AppState;
+use tauri::{Emitter, Manager};
+use tauri_plugin_autostart::MacosLauncher;
 
 #[cfg(target_os = "linux")]
 fn avoid_webkit_teardown_crash() {
@@ -32,7 +32,8 @@ fn silence_gtk() {
         _level: u32,
         _message: *const i8,
         _data: *mut c_void,
-    ) {}
+    ) {
+    }
     #[link(name = "glib-2.0")]
     extern "C" {
         fn g_log_set_default_handler(
@@ -50,7 +51,9 @@ pub fn set_autostart(app: &tauri::AppHandle, on: bool) {
     use tauri_plugin_autostart::ManagerExt;
     let mgr = app.autolaunch();
     let now = mgr.is_enabled().unwrap_or(false);
-    if now == on { return; }
+    if now == on {
+        return;
+    }
     let r = if on { mgr.enable() } else { mgr.disable() };
     match r {
         Ok(()) => log::info!("avtostart {}", if on { "yoqildi" } else { "o'chirildi" }),

@@ -1,8 +1,8 @@
+use crate::models::{Bell, Settings};
+use rusqlite::{params, Connection};
 use std::collections::HashMap;
 use std::path::Path;
 use std::sync::Mutex;
-use rusqlite::{params, Connection};
-use crate::models::{Bell, Settings};
 
 #[derive(PartialEq, Eq)]
 struct Row {

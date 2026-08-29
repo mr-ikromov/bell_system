@@ -1,10 +1,10 @@
+use crate::models::Bell;
+use crate::state::AppState;
+use chrono::{DateTime, Datelike, Local, NaiveDate, TimeZone};
 use std::collections::HashSet;
 use std::thread;
 use std::time::{Duration, Instant};
-use chrono::{DateTime, Datelike, Local, NaiveDate, TimeZone};
 use tauri::{AppHandle, Emitter, Manager};
-use crate::models::Bell;
-use crate::state::AppState;
 
 const TICK: Duration = Duration::from_millis(500);
 const JUMP_MS: i64 = 5_000;

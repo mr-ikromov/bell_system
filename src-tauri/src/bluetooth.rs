@@ -1,11 +1,11 @@
-use std::io::{BufRead, BufReader};
-use std::thread;
-use std::time::{Duration, Instant};
-use tauri::{AppHandle, Emitter, Manager};
 use crate::audio;
 use crate::models::BtStatus;
 use crate::routing;
 use crate::state::AppState;
+use std::io::{BufRead, BufReader};
+use std::thread;
+use std::time::{Duration, Instant};
+use tauri::{AppHandle, Emitter, Manager};
 
 const HINTS: [&str; 5] = ["bluez", "bluetooth", "a2dp", "hands-free", "headset"];
 
